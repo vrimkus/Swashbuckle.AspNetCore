@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FakeControllerWithXmlComments>
+    <ActionWithIncludeXmlComments>
+        <summary>
+        Summary for ActionWithIncludeXmlComments
+        </summary>
+        <remarks>
+        Remarks for ActionWithIncludeXmlComments
+        </remarks>
+    </ActionWithIncludeXmlComments>
+</FakeControllerWithXmlComments>

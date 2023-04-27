@@ -73,6 +73,25 @@ namespace Swashbuckle.AspNetCore.SwaggerGen.Test
             Assert.Equal("Description for default response", operation.Responses["default"].Description);
         }
 
+        [Fact]
+        public void Apply_SetsSummaryAndDescription_FromIncludedXmlCommentsFile()
+        {
+            var operation = new OpenApiOperation();
+            var methodInfo = typeof(FakeControllerWithXmlComments)
+                .GetMethod(nameof(FakeControllerWithXmlComments.ActionWithIncludeXmlComments));
+            var apiDescription = ApiDescriptionFactory.Create(
+                methodInfo: methodInfo,
+                groupName: "v1",
+                httpMethod: "POST",
+                relativePath: "resource");
+            var filterContext = new OperationFilterContext(apiDescription, null, null, methodInfo);
+
+            Subject().Apply(operation, filterContext);
+
+            Assert.Equal("Summary for ActionWithIncludeXmlComments", operation.Summary);
+            Assert.Equal("Remarks for ActionWithIncludeXmlComments", operation.Description);
+        }
+
         private XmlCommentsOperationFilter Subject()
         {
             using (var xmlComments = File.OpenText(typeof(FakeControllerWithXmlComments).Assembly.GetName().Name + ".xml"))

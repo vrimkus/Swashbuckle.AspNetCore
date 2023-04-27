@@ -43,6 +43,16 @@
             <response code="200">Description for 200 response</response>
             <response code="400">Description for 400 response</response>
         </member>
+        <member name="M:Swashbuckle.AspNetCore.SwaggerGen.Test.FakeControllerWithXmlComments.ActionWithIncludeXmlComments">
+            <ActionWithIncludeXmlComments>
+        <summary>
+        Summary for ActionWithIncludeXmlComments
+        </summary>
+        <remarks>
+        Remarks for ActionWithIncludeXmlComments
+        </remarks>
+    </ActionWithIncludeXmlComments>
+        </member>
         <member name="T:Swashbuckle.AspNetCore.SwaggerGen.Test.XmlAnnotatedGenericType`2">
             <summary>
             Summary for XmlAnnotatedGenericType

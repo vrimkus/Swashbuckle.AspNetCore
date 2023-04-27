@@ -30,6 +30,10 @@ namespace Swashbuckle.AspNetCore.SwaggerGen.Test
         public void ActionWithResponseTags()
         { }
 
+        /// <include file='./FakeControllerWithXmlComments.xml' path="FakeControllerWithXmlComments/ActionWithIncludeXmlComments"/>
+        public void ActionWithIncludeXmlComments()
+        { }
+
         ///// <param name="boolParam" example="true"></param>
         ///// <param name="intParam" example="27"></param>
         ///// <param name="longParam" example="4294967296"></param>

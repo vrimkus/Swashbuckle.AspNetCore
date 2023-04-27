@@ -43,15 +43,20 @@ namespace Swashbuckle.AspNetCore.SwaggerGen
 
             if (methodNode == null) return;
 
-            var summaryNode = methodNode.SelectSingleNode("summary");
+            /*
+             * When including XML Comments using the `<include>` tag, the generated XML Documentation may contain a nested node.
+             * We can leverage `.//` XPath to allow selection of the desired nodes, irrespective of their nesting level
+             * (relative to `methodNode`).
+             */
+            var summaryNode = methodNode.SelectSingleNode(".//summary");
             if (summaryNode != null)
                 operation.Summary = XmlCommentsTextHelper.Humanize(summaryNode.InnerXml);
 
-            var remarksNode = methodNode.SelectSingleNode("remarks");
+            var remarksNode = methodNode.SelectSingleNode(".//remarks");
             if (remarksNode != null)
                 operation.Description = XmlCommentsTextHelper.Humanize(remarksNode.InnerXml);
 
-            var responseNodes = methodNode.Select("response");
+            var responseNodes = methodNode.Select(".//response");
             ApplyResponseTags(operation, responseNodes);
         }
 
